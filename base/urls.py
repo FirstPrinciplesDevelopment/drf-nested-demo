@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
+from base.apps.mailings import urls as mailing_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(mailing_urls))
 ]
