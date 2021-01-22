@@ -1,4 +1,4 @@
-from rest_framework import serializers, viewsets
+from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
@@ -32,6 +32,7 @@ from .serializers import (ClientSerializer, MailDropSerializer,
 
 #     def destroy(self, request, pk=None):
 #         pass
+
 
 class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
