@@ -95,6 +95,7 @@ class MailRecipientViewSet(viewsets.ModelViewSet):
                                              context={'request': request})
         return Response(serializer.data)
     
+    # add create view for recipients
     def create(self, request, *args, **kwargs):
         mailrecipient = MailRecipient()
         mailrecipient.name = request.POST['name']
