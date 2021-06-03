@@ -94,3 +94,12 @@ class MailRecipientViewSet(viewsets.ModelViewSet):
         serializer = MailRecipientSerializer(mailrecipient,
                                              context={'request': request})
         return Response(serializer.data)
+    
+    def create(self, request, *args, **kwargs):
+        mailrecipient = MailRecipient()
+        mailrecipient.name = request.POST['name']
+        mailrecipient.maildrop_id = int(self.kwargs['maildrop_pk'])
+        mailrecipient.save()
+        serializer = MailRecipientSerializer(mailrecipient, context={'request': request})
+        return Response(serializer.data)
+
