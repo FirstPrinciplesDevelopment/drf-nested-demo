@@ -25,6 +25,7 @@ class MailRecipientSerializer(NestedHyperlinkedModelSerializer):
     class Meta:
         model = MailRecipient
         fields = ('id', 'url', 'name', 'maildrop')
+        
 
 
 class MailDropMailRecipientSerializer(NestedHyperlinkedModelSerializer):
@@ -43,10 +44,13 @@ class MailDropClientSerializer(NestedHyperlinkedModelSerializer):
     parent_lookup_kwargs = {
         'pk': 'pk'
     }
+    
 
     class Meta:
         model = Client
-        fields = ('url', 'name')
+        fields = ('url', 'name',)
+        depth = 1
+
 
 
 class MailDropSerializer(NestedHyperlinkedModelSerializer):
@@ -79,4 +83,5 @@ class ClientSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Client
-        fields = ('id', 'url', 'name', 'maildrops')
+        fields = ('id', 'url', 'name', 'maildrops',)
+        depth = 2

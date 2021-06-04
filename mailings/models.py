@@ -7,6 +7,7 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
+    
 
 
 class MailDrop(models.Model):
@@ -23,7 +24,7 @@ class MailDrop(models.Model):
 
 class MailRecipient(models.Model):
     """Represents a recipient of a mail drop"""
-    name = models.CharField(max_length=30, null=False, blank=False)
+    name = models.CharField(max_length=30, null=True, blank=True)
     maildrop = models.ForeignKey(
         MailDrop, related_name="recipients", null=False, blank=False,
         on_delete=models.CASCADE
